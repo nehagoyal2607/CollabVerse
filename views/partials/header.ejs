@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>CollabVerse</title>
+	<meta name="keywords" content="CollabVerse">
+	<meta name="description" content="CollabVerse">
+	<meta name="author" content="CollabVerse">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/css/theme.css">
+	<link rel="stylesheet" href="/css/chatpage.css">
+	<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+	<script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+		integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+		crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+		<script src="https://smtpjs.com/v3/smtp.js"></script>	
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"/>
+		<script src="https://use.fontawesome.com/0206006232.js"></script>
+		<link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+<body>
+<div id="loader-wrapper">
+	<div id="loader">
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
+</div>
+<header>
+	<!-- tt-mobile menu -->
+	<nav class="panel-menu mobile-main-menu">
+		<ul>
+			<li>
+				<a href="/">HOME</a>
+			</li>
+			<li>
+				<a href="/shop-listing">SHOP</a>
+			</li>
+		</ul>
+		<div class="mm-navbtn-names">
+			<div class="mm-closebtn">Close</div>
+			<div class="mm-backbtn">Back</div>
+		</div>
+	</nav>
+	<!-- tt-mobile-header -->
+	<div class="tt-mobile-header">
+		<div class="container-fluid">
+			<div class="tt-header-row">
+				<div class="tt-mobile-parent-menu">
+					<div class="tt-menu-toggle">
+						<i class="icon-03"></i>
+					</div>
+				</div>
+				<!-- search -->
+				<div class="tt-mobile-parent-search tt-parent-box"></div>
+				<!-- /search -->
+				<!-- cart -->
+				<div class="tt-mobile-parent-cart tt-parent-box"></div>
+				<!-- /cart -->
+				<!-- account -->
+				<div class="tt-mobile-parent-account tt-parent-box"></div>
+				<!-- /account -->
+				<!-- currency -->
+				<div class="tt-mobile-parent-multi tt-parent-box"></div>
+				<!-- /currency -->
+			</div>
+		</div>
+		<div class="container-fluid tt-top-line">
+			<div class="row">
+				<div class="tt-logo-container">
+					<!-- mobile logo -->
+					<a class="tt-logo tt-logo-alignment" href="/"><img src="images/custom/logo.png" alt=""></a>
+					<!-- /mobile logo -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- tt-desktop-header -->
+	<div class="tt-desktop-header">
+		<div class="container">
+			<div class="tt-header-holder">
+				<div class="tt-col-obj tt-obj-logo">
+					<!-- logo -->
+					<a class="tt-logo tt-logo-alignment" href="/"><img src="images/custom/logo.png" alt=""></a>
+					<!-- /logo -->
+				</div>
+				<div class="tt-col-obj tt-obj-menu">
+					<!-- tt-menu -->
+					<div class="tt-desctop-parent-menu tt-parent-box">
+						<div class="tt-desctop-menu">
+							<nav>
+								<ul>
+									<li class="dropdown tt-megamenu-col-02 selected">
+										<a href="/">HOME</a>
+									</li>
+									<li class="dropdown megamenu">
+										<a href="/shop-listing">SHOP</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+					<!-- /tt-menu -->
+				</div>
+				<div class="tt-col-obj tt-obj-options obj-move-right">
+					<!-- tt-search -->
+					<div class="tt-desctop-parent-search tt-parent-box">
+						<div class="tt-search tt-dropdown-obj">
+							<button class="tt-dropdown-toggle" data-tooltip="Search" data-tposition="bottom">
+								<i class="icon-f-85"></i>
+							</button>
+							<div class="tt-dropdown-menu">
+								<div class="container">
+									<form>
+										<div class="tt-col">
+											<input type="text" class="tt-search-input" placeholder="Search Products...">
+											<button class="tt-btn-search" type="submit"></button>
+										</div>
+										<div class="tt-col">
+											<button class="tt-btn-close icon-g-80"></button>
+										</div>
+										<div class="tt-info-text">
+											What are you Looking for?
+										</div>
+										<div class="search-results">
+											<ul>
+										        <li>
+										           <a href="/product">
+										            	<div class="thumbnail"><img src="images/loader.svg" data-src="images/product/product-02.jpg" alt=""></div>
+										            	<div class="tt-description">
+										            		<div class="tt-title">Flared Shift Bag</div>
+										            		<div class="tt-price">
+																$24
+															</div>
+										            	</div>
+										            </a>
+										        </li>
+											</ul>
+											<button type="button" class="tt-view-all">View all products</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /tt-search -->
+					<!-- tt-cart -->
+					<!-- recommendation cart-->
+					<div class="tt-desctop-parent-cart tt-parent-box" >
+						<div class="tt-cart tt-dropdown-obj" data-tooltip="Cart" data-tposition="bottom">
+							<button id="cartButton" class="tt-dropdown-toggle">
+								<i class="icon-f-39"></i>
+								<!-- <span class="tt-badge-cart">2</span> -->
+							</button>
+							<div class="tt-dropdown-menu">
+								<div class="tt-mobile-add">
+									<h6 class="tt-title">SUGGESTION CART</h6>
+									<button class="tt-close">Close</button>
+								</div>
+								<div class="tt-dropdown-inner">
+									<div class="tt-cart-layout">
+										<!-- layout emty cart -->
+										<!-- <a href="/empty-cart" class="tt-cart-empty">
+											<i class="icon-f-39"></i>
+											<p>No Products in the Cart</p>
+										</a> -->
+										<div class="tt-cart-content">
+											<div class="tt-cart-list" id="recommdationCartList">
+												<!-- <div class="tt-item">
+													<a href="/product">
+														<div class="tt-item-img">
+															<img src="images/loader.svg" data-src="images/product/product-01.jpg" alt="">
+														</div>
+														<div class="tt-item-descriptions">
+															<h2 class="tt-title">Flared Shift Dress</h2>
+															<ul class="tt-add-info">
+																<li>Yellow, Material 2, Size 58,</li>
+																<li>Vendor: Addidas</li>
+															</ul>
+															<div class="tt-quantity">1 X</div> <div class="tt-price">$12</div>
+														</div>
+													</a>
+													<div class="tt-item-close">
+														<a href="#" class="tt-btn-close"></a>
+													</div>
+												</div>
+												<div class="tt-item">
+													<a href="/product">
+														<div class="tt-item-img">
+															<img src="images/loader.svg" data-src="images/product/product-02.jpg" alt="">
+														</div>
+														<div class="tt-item-descriptions">
+															<h2 class="tt-title">Flared Shift Dress</h2>
+															<ul class="tt-add-info">
+																<li>Yellow, Material 2, Size 58,</li>
+																<li>Vendor: Addidas</li>
+															</ul>
+															<div class="tt-quantity">1 X</div> <div class="tt-price">$18</div>
+														</div>
+													</a>
+													<div class="tt-item-close">
+														<a href="#" class="tt-btn-close"></a>
+													</div>
+												</div> -->
+											</div>
+											
+											<div class="tt-cart-btn">
+												<div class="tt-item">
+													<a href="/shopping-cart" class="btn">PROCEED TO CHECKOUT</a>
+												</div>
+												<div class="tt-item">
+													<a href="/shopping-cart" class="btn-link-02 tt-hidden-mobile">View Cart</a>
+													<a href="/shopping-cart" class="btn btn-border tt-hidden-desctope">VIEW CART</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /tt-cart -->
+					<!-- tt-account -->
+					<div class="tt-desctop-parent-account tt-parent-box">
+						<div class="tt-account tt-dropdown-obj">
+							<% if(!currentUser){%>
+								<a href="/login" class="tt-dropdown-obj px-1">Login</a>
+								<a href="/register" class="tt-dropdown-obj px-1">Register</a>
+								<button class="tt-dropdown-toggle"  data-tooltip="My Account" data-tposition="bottom"><i class="icon-f-94"></i></button>
+								<div class="tt-dropdown-obj px-1">Hello, User</div>
+
+							<%}else{%>
+								<button class="tt-dropdown-toggle"  data-tooltip="My Account" data-tposition="bottom"><i class="icon-f-94"></i></button>
+								<a href="/logout" class="tt-dropdown-obj px-1">Logout</a>
+								<div class="tt-dropdown-obj px-1">Hello, <%=currentUser.givenName%></div>
+							<%}%>
+							
+							
+						</div>
+					</div>
+					<!-- /tt-account -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- stuck nav -->
+	<div class="tt-stuck-nav">
+		<div class="container">
+			<div class="tt-header-row ">
+				<div class="tt-stuck-parent-menu"></div>
+				<div class="tt-stuck-parent-search tt-parent-box"></div>
+				<div class="tt-stuck-parent-cart tt-parent-box"></div>
+				<div class="tt-stuck-parent-account tt-parent-box"></div>
+				<div class="tt-stuck-parent-multi tt-parent-box"></div>
+			</div>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,205 @@
+<!-- chat feature ui begins -->
+<button class="open-button" onclick="openForm()" data-aos="fade-up">Chat</button>
+
+<div class="chat-popup" id="myForm" data-aos="fade-up">
+    <form action="" class="form-container" id="form-container">
+        <div class="form-container-nav">
+            <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+            <div class="end-session-btn" onclick="leaveRoom()">Leave</div>
+            <div class="form-container-nav-btnDiv">
+                <div class="chat-invite" onclick="openInviteDiv()">
+                    <img src="/images/invite1.png" alt="">
+                </div>
+                <div class="chat-dropdown" onclick="closeForm()">
+                    <img src="/images/downarrow1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="form-container-inviteCopyDiv" data-aos="fade-up">
+            <input type="text" placeholder="Enter Email" class="inviteEmailInput" id="inviteEmailInputId">
+            <div class="inviteBtn" onclick="sendEmail()">Invite</div>
+            <div class="generateCodeDiv tooltip" onclick="myFunction()" onmouseout="outFunc()"><span class="tooltiptext" id="myTooltip">Copy Code</span><img src="images/copyCode.png" alt="" height="20px" width="20px"></div>
+        </div>
+        <!-- <div class="tooltip">
+            <button onclick="myFunction()" onmouseout="outFunc()">
+              <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+              Copy text
+              </button>
+            </div> -->
+        <!-- this is the part shown when no connection yet -->
+        <div class="no-connection-mainDiv">
+            <div class="no-connection-invite">
+                <img src="/images/invite2.png" alt="">
+            </div>
+            <div>
+                Invite your friends to collaborate
+            </div>
+            <div>
+                <div class="no-connection-beginBtn" onclick="beginSession()">
+                    Begin
+                </div>
+            </div>
+            <div class="no-connection-preMainButtonsText">
+                or join an exisiting session
+            </div>
+            <div class="no-connection-mainButtons">
+                <div class="no-connection-joinRoomInput">
+                    <input type="text" placeholder="Enter Room ID" id="joinRoomInput">
+                </div>
+                <div class="no-connection-joinBtn" onclick="joinRoom()">Join</div>
+                
+            </div>
+            <div id="wrongRoomError"></div>
+        </div>
+        <!-- no connection part ends -->
+
+        <!-- IMPORTANT IMPORTANT IMPORTANT 
+        when connection invite is sent do this-
+        1. remove the display none from : end-session-btn chat-invite msger
+        2. add display none to : no-connection-mainDiv 
+        -->
+
+        <!-- THIS IS THE CHAT SECTION -->
+        <section class="msger mt-6">
+            <main class="msger-chat" id="chatContainer">
+                <!-- <div class="msg right-msg">
+                    <div class="msg-img" style="background-image: url(/images/male-user.svg)"></div>
+
+                    <div class="msg-bubble">
+                        <div class="msg-info">
+                            <div class="msg-info-name">You</div>
+                        </div>
+
+                        <div class="msg-text">intro_msg</div>
+                    </div>
+                </div>
+                <div class="msg left-msg">
+                    
+                </div> -->
+
+            </main>
+
+            <div class="msger-inputarea" style="display:flex; flex-direction:column">
+                <div style="padding:0;text-align:center;display:flex;align-content: center;align-items: center;justify-content: center;">
+                    <div>See recommendations from this chat <br/> (Your TOP 3!)</div>
+                    <div class="msger-send-btn"onclick="openCart()"><i class="icon-f-39"></i></div>
+                </div>
+                <div style="width:100%; display: flex;">
+                    <input type="text" class="msger-input" id="message" placeholder="Enter your message...">
+                    <!-- <button class="msger-send-btn" onclick="addLoc()">Attach Location</button> -->
+                    <!-- <button class="msger-send-btn" onclick="sendMessage()">Send</button> -->
+                    <div class="msger-sendMyCart-btn" id="msger-sendMyCart-btn" onclick="shareMyCarttoChat()" title="Share Cart"><img src="images/cart.png" alt=""></div>
+                    <div class="msger-send-btn" id="msger-send-btn">Send</div>
+                </div>
+        </section>
+        <!-- THIS IS THE end of CHAT SECTION -->
+
+    </form>
+</div>
+    <a href="#" id="tt-btn-authenticate" data-toggle="modal"
+    data-target="#Modalauthenticate" data-tooltip="Quick View"
+    data-tposition="left"></a>
+
+    <div class="modal  fade" id="Modalauthenticate" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <button type="button" id="ModalauthenticateCloseButton" class="close" data-dismiss="modal" aria-hidden="true"><span
+                            class="icon icon-clear"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="tt-modal-quickview desctope">
+                        <div class="row">
+                            <div class="tt-add-info" id="modalErrorMessage"></div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="tt-item">
+                                    <h2 class="tt-title">PERSONAL INFORMATION</h2>
+                                    <div class="form-default">
+                                        <form id="modalRegisterForm" method="POST" action="/register">
+                                            <div class="form-group">
+                                                <label for="loginInputName">FIRST NAME *</label>
+                                                <div class="tt-required">* Required Fields</div>
+                                                <input type="text" name="givenName" class="form-control" id="loginInputName"
+                                                    placeholder="Enter First Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loginLastName">LAST NAME *</label>
+                                                <input type="text" name="familyName" class="form-control" id="loginLastName"
+                                                    placeholder="Enter Last Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loginInputEmail">E-MAIL *</label>
+                                                <input type="email" name="email" class="form-control" id="loginInputEmail"
+                                                    placeholder="Enter E-mail">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loginInputPassword">PASSWORD *</label>
+                                                <input type="password" name="password" class="form-control"
+                                                    id="loginInputPassword" placeholder="Enter Password">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-border" type="submit">CREATE</button>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+    
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="tt-item">
+                                    <h2 class="tt-title">LOGIN</h2>
+                                    If you have an account with us, please log in.
+                                    <div class="form-default form-top">
+                                        <form id="modalLoginForm" method="POST" action="/login" novalidate="novalidate">
+                                            <div class="form-group">
+                                                <label for="loginEmail">E-MAIL *</label>
+                                                <div class="tt-required">* Required Fields</div>
+                                                <input type="email" name="email" class="form-control" id="loginEmail"
+                                                    placeholder="Enter Username or E-mail">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="loginPassword">PASSWORD *</label>
+                                                <input type="password" name="password" class="form-control"
+                                                    id="loginPassword" placeholder="Enter Password">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-auto mr-auto">
+                                                    <div class="form-group">
+                                                        <button class="btn btn-border" type="submit">LOGIN</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        scrollBottom();
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    function openCart() {
+        $("#cartButton").click();
+        handleCartClick();
+    }
+    
+</script>

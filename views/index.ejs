@@ -1,0 +1,648 @@
+<%- include("partials/header") %>
+
+	<div id="tt-pageContent">
+		<div class="container-indent nomargin">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="slider-revolution revolution-default">
+						<div class="tp-banner-container">
+							<div class="tp-banner revolution">
+								<ul>
+									<li data-thumb="images/slides/01/slide-02.jpg" data-transition="fade"
+										data-slotamount="1" data-masterspeed="1000" data-saveperformance="off"
+										data-title="Slide">
+										<img src="images/slides/01/slide-02.jpg" alt="slide1"
+											data-bgposition="center center" data-bgfit="cover"
+											data-bgrepeat="no-repeat">
+										<div class="tp-caption tp-caption1 lft stb" data-x="center" data-y="center"
+											data-hoffset="0" data-voffset="0" data-speed="600" data-start="900"
+											data-easing="Power4.easeOut" data-endeasing="Power4.easeIn">
+											<div class="tp-caption1-wd-1 tt-white-color">Welcome To</div>
+											<div class="tp-caption1-wd-2 tt-white-color">CollabVerse</div>
+											<div class="tp-caption1-wd-3 tt-white-color">A Collaborative Shopping Platform</div>
+											<div class="tp-caption1-wd-4"><a href="/shop-listing" target="_blank"
+													class="btn btn-xl" data-text="SHOP NOW!">SHOP NOW!</a></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-indent0">
+			<div class="container-fluid">
+				<div class="row tt-layout-promo-box">
+					<div class="col-sm-12 col-md-6">
+						<div class="row">
+							<div class="col-sm-6">
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/sale.jpg" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">SALE</div>
+										</div>
+									</div>
+								</a>
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/new.jpg" style="height: 269px; object-fit: cover;" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">NEW</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-sm-6">
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/women.jpg" style="height: 490px; object-fit: cover;" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">WOMEN</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-6">
+						<div class="row">
+							<div class="col-sm-6">
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/men.jpg" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">MEN</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-sm-6">
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/accessories.jpg" style="height: 200px; object-fit: cover;" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">ACCESSORIES</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-sm-12">
+								<a href="/shop-listing" class="tt-promo-box tt-one-child hover-type-2">
+									<img src="images/loader.svg" data-src="images/promo/shoes.jpg" style="height: 269px; object-fit: cover;" alt="">
+									<div class="tt-description">
+										<div class="tt-description-wrapper">
+											<div class="tt-background"></div>
+											<div class="tt-title-small">SHOES</div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-indent">
+			<div class="container container-fluid-custom-mobile-padding">
+				<div class="tt-block-title">
+					<h1 class="tt-title">TRENDING</h1>
+					<div class="tt-description">TOP VIEW IN THIS WEEK</div>
+				</div>
+				<div class="row tt-layout-product-item">
+					<% catalog.forEach(item=> {%>
+						<div class="col-6 col-md-4 col-lg-3">
+							<div class="tt-product thumbprod-center">
+								<div class="tt-image-box">
+									<a href="#" class="tt-btn-quickview" data-toggle="modal"
+										data-target="#ModalquickView<%=item.id%>" data-tooltip="Quick View"
+										data-tposition="left"></a>
+									<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist"
+										data-tposition="left"></a>
+									<button class="tt-btn-compare" data-tooltip="Add to Chat"
+										data-tposition="left" onclick="addToChat('<%=item.id%>')"></button>
+									<a href="/product/<%=item.id%>">
+										<span class="tt-img"><img src="images/loader.svg"
+												data-src=<%=item.imageData.url%> alt=""></span>
+									</a>
+								</div>
+								<div class="tt-description">
+									<div class="tt-row">
+										<ul class="tt-add-info">
+											<li><a href="#">
+													<%=item.itemVariationData.name.split(" ").slice(-1)%></a>
+								</ul>
+								<div class=" tt-rating">
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+									</div>
+								</div>
+								<h2 class="tt-title"><a href="/product">
+										<%=item.itemVariationData.name%>
+									</a></h2>
+								<div class="tt-price">
+									$ <%= item.itemVariationData.priceMoney.amount/100 %>
+								</div>
+								<div class="tt-option-block">
+									<ul class="tt-options-swatch">
+										<li class="active"><a class="options-color tt-color-bg-01" href="#"></a></li>
+										<li><a class="options-color tt-color-bg-02" href="#"></a></li>
+									</ul>
+								</div>
+								<div class="tt-product-inside-hover">
+									<div class="tt-row-btn">
+										<div class="tt-btn-addtocart thumbprod-button-bg" style="cursor: pointer;" onclick="addToCartFromProducts('<%=item.id%>')">ADD TO CART</div>
+									</div>
+									<div class="tt-row-btn">
+										<a href="#" class="tt-btn-quickview" data-toggle="modal"
+											data-target="#ModalquickView"></a>
+										<a href="#" class="tt-btn-wishlist"></a>
+										<button class="tt-btn-compare" onclick="addToChat('<%=item.id%>')"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+				</div>
+
+				<div class="modal  fade" id="ModalquickView<%=item.id%>" tabindex="-1" role="dialog"
+					aria-label="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content ">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+										class="icon icon-clear"></span></button>
+							</div>
+							<div class="modal-body">
+								<div class="tt-modal-quickview desctope">
+									<div class="row">
+										<div class="col-12 col-md-5 col-lg-6">
+											<div class="tt-mobile-product-slider arrow-location-center">
+												<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+													alt=""></div>
+												<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+													alt=""></div>
+												<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+													alt=""></div>
+												<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+													alt=""></div>
+												<div>
+													<div class="tt-video-block">
+														<a href="#" class="link-video"></a>
+														<video class="movie" src="video/video.mp4"
+															poster="video/video_img.jpg"></video>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-7 col-lg-6">
+											<div class="tt-product-single-info">
+												<div class="tt-add-info">
+													<ul>
+														<li><span>SKU:</span> 001</li>
+														<li><span>Availability:</span> 40 in Stock</li>
+													</ul>
+												</div>
+												<h2 class="tt-title">
+													<%=item.itemVariationData.name%>
+												</h2>
+												<div class="tt-price">
+													<span class="new-price">$ <%=
+															item.itemVariationData.priceMoney.amount/100 %></span>
+													<span class="old-price"></span>
+												</div>
+												<div class="tt-review">
+													<div class="tt-rating">
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+														<i class="icon-star"></i>
+														<i class="icon-star-half"></i>
+														<i class="icon-star-empty"></i>
+													</div>
+													<a href="#">(1 Customer Review)</a>
+												</div>
+												<div class="tt-wrapper">
+													<%=item.customAttributeValues.description.stringValue%>
+												</div>
+												<div class="tt-swatches-container">
+													<div class="tt-wrapper">
+														<div class="tt-title-options">SIZE</div>
+														<form class="form-default">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>21</option>
+																	<option>25</option>
+																	<option>36</option>
+																</select>
+															</div>
+														</form>
+													</div>
+													<div class="tt-wrapper">
+														<div class="tt-title-options">COLOR</div>
+														<form class="form-default">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>Red</option>
+																	<option>Green</option>
+																	<option>Brown</option>
+																</select>
+															</div>
+														</form>
+													</div>
+													<div class="tt-wrapper">
+														<div class="tt-title-options">TEXTURE:</div>
+														<ul class="tt-options-swatch options-large">
+															<li><a class="options-color" href="#">
+																	<span class="swatch-img">
+																		<img src="images/loader.svg"
+																			data-src="images/custom/texture-img-01.jpg"
+																			alt="">
+																	</span>
+																	<span class="swatch-label color-black"></span>
+																</a></li>
+															<li class="active"><a class="options-color" href="#">
+																	<span class="swatch-img">
+																		<img src="images/loader.svg"
+																			data-src="images/custom/texture-img-02.jpg"
+																			alt="">
+																	</span>
+																	<span class="swatch-label color-black"></span>
+																</a></li>
+															<li><a class="options-color" href="#">
+																	<span class="swatch-img">
+																		<img src="images/loader.svg"
+																			data-src="images/custom/texture-img-03.jpg"
+																			alt="">
+																	</span>
+																	<span class="swatch-label color-black"></span>
+																</a></li>
+															<li><a class="options-color" href="#">
+																	<span class="swatch-img">
+																		<img src="images/loader.svg"
+																			data-src="images/custom/texture-img-04.jpg"
+																			alt="">
+																	</span>
+																	<span class="swatch-label color-black"></span>
+																</a></li>
+															<li><a class="options-color" href="#">
+																	<span class="swatch-img">
+																		<img src="images/loader.svg"
+																			data-src="images/custom/texture-img-05.jpg"
+																			alt="">
+																	</span>
+																	<span class="swatch-label color-black"></span>
+																</a></li>
+														</ul>
+													</div>
+												</div>
+												<div class="tt-wrapper">
+													<div class="tt-row-custom-01">
+														<div class="col-item">
+															<div class="tt-input-counter style-01">
+																<span class="minus-btn"></span>
+																<input type="text" value="1" size="5">
+																<span class="plus-btn"></span>
+															</div>
+														</div>
+														<div class="col-item">
+															<a href="#" class="btn btn-lg"><i class="icon-f-39"></i>ADD
+																TO CART</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+	<div class="container-indent">
+		<div class="container-fluid-custom">
+			<div class="row tt-layout-promo-box">
+				<div class="col-sm-6 col-md-4">
+					<a href="/shop-listing" class="tt-promo-box">
+						<img src="images/loader.svg" data-src="images/promo/index-promo-img-07.jpg" alt="">
+						<div class="tt-description">
+							<div class="tt-description-wrapper">
+								<div class="tt-background"></div>
+								<div class="tt-title-small">FALL-WINTER CLEARANCE SALES</div>
+								<div class="tt-title-large">GET UP TO <span class="tt-base-color">50% OFF</span></div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<a href="/shop-listing" class="tt-promo-box">
+						<img src="images/loader.svg" data-src="images/promo/index-promo-img-08.jpg" alt="">
+						<div class="tt-description">
+							<div class="tt-description-wrapper">
+								<div class="tt-background"></div>
+								<div class="tt-title-small">SUMMER <span class="tt-base-color">2023</span></div>
+								<div class="tt-title-large">NEW ARRIVALS</div>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="col-sm-6 col-md-4">
+					<a href="/shop-listing" class="tt-promo-box">
+						<img src="images/loader.svg" data-src="images/promo/index-promo-img-09.jpg" alt="">
+						<div class="tt-description">
+							<div class="tt-background"></div>
+							<div class="tt-description-wrapper">
+								<div class="tt-background"></div>
+								<div class="tt-title-small">NEW COLLECTION</div>
+								<div class="tt-title-large"><span class="tt-base-color">HANDBAGS</span></div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-indent">
+		<div class="container container-fluid-custom-mobile-padding">
+			<div class="tt-block-title">
+				<h2 class="tt-title">BEST SELLER</h2>
+				<div class="tt-description">TOP SALE IN THIS WEEK</div>
+			</div>
+			<% catalog=catalog.sort(()=> 0.5 - Math.random()); %>
+				<% catalog=catalog.slice(0, 4); %>
+					<div class="row tt-layout-product-item">
+						<% catalog.forEach(item=> {%>
+							<div class="col-6 col-md-4 col-lg-3">
+								<div class="tt-product thumbprod-center">
+									<div class="tt-image-box">
+										<a href="#" class="tt-btn-quickview" data-toggle="modal"
+											data-target="#ModalquickView<%=item.id%>" data-tooltip="Quick View"
+											data-tposition="left"></a>
+										<a href="#" class="tt-btn-wishlist" data-tooltip="Add to Wishlist"
+											data-tposition="left"></a>
+										<button class="tt-btn-compare" data-tooltip="Add to Chat"
+											data-tposition="left" onclick="addToChat('<%=item.id%>')"></button>
+										<a href="/product/<%=item.id%>">
+											<span class="tt-img"><img src="images/loader.svg"
+													data-src=<%=item.imageData.url%> alt=""></span>
+											<span class="tt-label-location">
+												<span class="tt-label-our-fatured">Featured</span>
+											</span>
+										</a>
+									</div>
+									<div class="tt-description">
+										<div class="tt-row">
+											<ul class="tt-add-info">
+												<li><a href="#">
+														<%=item.itemVariationData.name.split(" ").slice(-1)%></a>
+									</ul>
+									<div class=" tt-rating">
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+										</div>
+									</div>
+									<h2 class="tt-title"><a href="/product">
+											<%=item.itemVariationData.name%>
+										</a></h2>
+									<div class="tt-price">
+										$ <%= item.itemVariationData.priceMoney.amount/100 %>
+									</div>
+									<div class="tt-option-block">
+										<ul class="tt-options-swatch">
+											<li class="active"><a class="options-color tt-color-bg-01" href="#"></a>
+											</li>
+											<li><a class="options-color tt-color-bg-02" href="#"></a></li>
+										</ul>
+									</div>
+									<div class="tt-product-inside-hover">
+										<div class="tt-row-btn">
+											<div class="tt-btn-addtocart thumbprod-button-bg" style="cursor: pointer;" onclick="addToCartFromProducts('<%=item.id%>')">ADD TO CART</div>
+										</div>
+										<div class="tt-row-btn">
+											<a href="#" class="tt-btn-quickview" data-toggle="modal"
+												data-target="#ModalquickView"></a>
+											<a href="#" class="tt-btn-wishlist"></a>
+											<button class="tt-btn-compare" onclick="addToChat('<%=item.id%>')"></button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+					</div>
+
+					<div class="modal  fade" id="ModalquickView<%=item.id%>" tabindex="-1" role="dialog"
+						aria-label="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content ">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span
+											class="icon icon-clear"></span></button>
+								</div>
+								<div class="modal-body">
+									<div class="tt-modal-quickview desctope">
+										<div class="row">
+											<div class="col-12 col-md-5 col-lg-6">
+												<div class="tt-mobile-product-slider arrow-location-center">
+													<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+														alt=""></div>
+													<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+														alt=""></div>
+													<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+														alt=""></div>
+													<div><img src="images/loader.svg" data-src=<%=item.imageData.url%>
+														alt=""></div>
+													<div>
+														<div class="tt-video-block">
+															<a href="#" class="link-video"></a>
+															<video class="movie" src="video/video.mp4"
+																poster="video/video_img.jpg"></video>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-7 col-lg-6">
+												<div class="tt-product-single-info">
+													<div class="tt-add-info">
+														<ul>
+															<li><span>SKU:</span> 001</li>
+															<li><span>Availability:</span> 40 in Stock</li>
+														</ul>
+													</div>
+													<h2 class="tt-title">
+														<%=item.itemVariationData.name%>
+													</h2>
+													<div class="tt-price">
+														<span class="new-price">$ <%=
+																item.itemVariationData.priceMoney.amount/100 %></span>
+														<span class="old-price"></span>
+													</div>
+													<div class="tt-review">
+														<div class="tt-rating">
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+															<i class="icon-star"></i>
+															<i class="icon-star-half"></i>
+															<i class="icon-star-empty"></i>
+														</div>
+														<a href="#">(1 Customer Review)</a>
+													</div>
+													<div class="tt-wrapper">
+														<%=item.customAttributeValues.description.stringValue%>
+													</div>
+													<div class="tt-swatches-container">
+														<div class="tt-wrapper">
+															<div class="tt-title-options">SIZE</div>
+															<form class="form-default">
+																<div class="form-group">
+																	<select class="form-control">
+																		<option>21</option>
+																		<option>25</option>
+																		<option>36</option>
+																	</select>
+																</div>
+															</form>
+														</div>
+														<div class="tt-wrapper">
+															<div class="tt-title-options">COLOR</div>
+															<form class="form-default">
+																<div class="form-group">
+																	<select class="form-control">
+																		<option>Red</option>
+																		<option>Green</option>
+																		<option>Brown</option>
+																	</select>
+																</div>
+															</form>
+														</div>
+														<div class="tt-wrapper">
+															<div class="tt-title-options">TEXTURE:</div>
+															<ul class="tt-options-swatch options-large">
+																<li><a class="options-color" href="#">
+																		<span class="swatch-img">
+																			<img src="images/loader.svg"
+																				data-src="images/custom/texture-img-01.jpg"
+																				alt="">
+																		</span>
+																		<span class="swatch-label color-black"></span>
+																	</a></li>
+																<li class="active"><a class="options-color" href="#">
+																		<span class="swatch-img">
+																			<img src="images/loader.svg"
+																				data-src="images/custom/texture-img-02.jpg"
+																				alt="">
+																		</span>
+																		<span class="swatch-label color-black"></span>
+																	</a></li>
+																<li><a class="options-color" href="#">
+																		<span class="swatch-img">
+																			<img src="images/loader.svg"
+																				data-src="images/custom/texture-img-03.jpg"
+																				alt="">
+																		</span>
+																		<span class="swatch-label color-black"></span>
+																	</a></li>
+																<li><a class="options-color" href="#">
+																		<span class="swatch-img">
+																			<img src="images/loader.svg"
+																				data-src="images/custom/texture-img-04.jpg"
+																				alt="">
+																		</span>
+																		<span class="swatch-label color-black"></span>
+																	</a></li>
+																<li><a class="options-color" href="#">
+																		<span class="swatch-img">
+																			<img src="images/loader.svg"
+																				data-src="images/custom/texture-img-05.jpg"
+																				alt="">
+																		</span>
+																		<span class="swatch-label color-black"></span>
+																	</a></li>
+															</ul>
+														</div>
+													</div>
+													<div class="tt-wrapper">
+														<div class="tt-row-custom-01">
+															<div class="col-item">
+																<div class="tt-input-counter style-01">
+																	<span class="minus-btn"></span>
+																	<input type="text" value="1" size="5">
+																	<span class="plus-btn"></span>
+																</div>
+															</div>
+															<div class="col-item">
+																<a href="#" class="btn btn-lg"><i
+																		class="icon-f-39"></i>ADD TO CART</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<% }) %>
+		</div>
+	</div>
+	</div>
+	<div class="container-indent">
+		<div class="container">
+			<div class="row tt-services-listing">
+				<div class="col-xs-12 col-md-6 col-lg-4">
+					<a href="#" class="tt-services-block">
+						<div class="tt-col-icon">
+							<i class="icon-f-48"></i>
+						</div>
+						<div class="tt-col-description">
+							<h4 class="tt-title">FREE SHIPPING</h4>
+							<p>Free shipping on all US order or order above $99</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-4">
+					<a href="#" class="tt-services-block">
+						<div class="tt-col-icon">
+							<i class="icon-f-35"></i>
+						</div>
+						<div class="tt-col-description">
+							<h4 class="tt-title">SUPPORT 24/7</h4>
+							<p>Contact us 24 hours a day, 7 days a week</p>
+						</div>
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-6 col-lg-4">
+					<a href="#" class="tt-services-block">
+						<div class="tt-col-icon">
+							<i class="icon-e-09"></i>
+						</div>
+						<div class="tt-col-description">
+							<h4 class="tt-title">30 DAYS RETURN</h4>
+							<p>Simply return it within 24 days for an exchange.</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<%- include("partials/footer") %>
